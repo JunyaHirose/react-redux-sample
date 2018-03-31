@@ -1,3 +1,6 @@
+const webpack = require('webpack');
+const env = require('./config/variables/dev');
+
 const args = process.argv;
 args.splice(0, 4);
 
@@ -31,7 +34,10 @@ module.exports = (config) => {
             ]
           }
         ]
-      }
+      },
+      plugins: [
+        new webpack.DefinePlugin(env)
+      ],
     },
     webpackMiddleware: {
       stats: 'errors-only',
