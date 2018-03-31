@@ -5,6 +5,7 @@ import Counter from './counter/Container'
 import NotFound from './NotFound'
 import ImmutableSample from './immutable/ImmutableSample'
 import ReactDNDSample from './dnd/Container'
+import FileUploadSample from './upload/Container'
 
 export class Routes extends React.Component<{}, {}> {
   render() {
@@ -26,11 +27,15 @@ export class Routes extends React.Component<{}, {}> {
         <li>
           <Link to="/dnd">Drag and Drop</Link>
         </li>
+        <li>
+          <Link to="/upload">file upload</Link>
+        </li>
         <Switch>
           <Route exact={true} path="/counter" component={Counter} />
           <Route path="/counter/:myParams" component={Counter} />
           <Route path="/immutable" component={ImmutableSample} />
           <Route path="/dnd" component={ReactDNDSample} />
+          <Route path="/upload" component={FileUploadSample} />
           <Route component={NotFound} />
         </Switch>
       </div>
