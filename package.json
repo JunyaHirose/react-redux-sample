@@ -8,7 +8,14 @@
     "build:prod": "webpack --config webpack.config.prod.js",
     "test:unit": "karma start karma.conf.js",
     "test:all": "karma start karma.conf.js **/*.spec.tsx **/*.spec.ts",
-    "server": "node dev-server.js"
+    "server": "node dev-server.js",
+    "lint:unit": "tslint -c tslint.json",
+    "lint:all": "tslint -c tslint.json 'src/**/*.ts?(x)'",
+    "format-base": "prettier --config ./prettier.config.js",
+    "format-check:all": "npm run format-base -- --list-different 'src/**/*.ts?(x)'",
+    "format-check:unit": "npm run format-base -- --list-different",
+    "format:all": "npm run format-base -- --write ./prettier.config.js 'src/**/*.ts?(x)'",
+    "format:unit": "npm run format-base -- --write ./prettier.config.js"
   },
   "devDependencies": {
     "@types/enzyme": "3.1.9",
@@ -30,8 +37,12 @@
     "karma-jasmine": "1.1.1",
     "karma-mocha-reporter": "2.2.5",
     "karma-webpack": "3.0.0",
+    "prettier": "1.11.1",
     "react-test-renderer": "16.3.0",
     "ts-loader": "4.1.0",
+    "tslint": "5.9.1",
+    "tslint-config-standard": "7.0.0",
+    "tslint-react": "3.5.1",
     "typescript": "2.8.1",
     "webpack": "4.4.1",
     "webpack-cli": "2.0.13"

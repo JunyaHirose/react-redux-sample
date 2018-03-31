@@ -1,4 +1,4 @@
-import {Action} from 'redux'
+import { Action } from 'redux'
 
 enum ActionNames {
   INC = 'counter/increment',
@@ -35,7 +35,7 @@ interface FetchRequestStartAction extends Action {
 }
 export const fetchRequestStart = (): FetchRequestStartAction => ({
   type: ActionNames.FETCH_START,
-  appAction: true,
+  appAction: true
 })
 
 interface FetchRequestFinishAction extends Action {
@@ -44,7 +44,7 @@ interface FetchRequestFinishAction extends Action {
 }
 export const fetchRequestFinish = (): FetchRequestFinishAction => ({
   type: ActionNames.FETCH_FINISH,
-  appAction: true,
+  appAction: true
 })
 
 export interface CounterState {
@@ -52,30 +52,27 @@ export interface CounterState {
   loadingCount: number
 }
 
-export type CounterActions = IncrementAction
-  | DecrementAction
-  | FetchRequestStartAction
-  | FetchRequestFinishAction
+export type CounterActions = IncrementAction | DecrementAction | FetchRequestStartAction | FetchRequestFinishAction
 
-const initialState:CounterState = {
+const initialState: CounterState = {
   num: 0,
   loadingCount: 0
 }
 
 export default function reducer(state: CounterState = initialState, action: Action | CounterActions): CounterState {
-  if (!("appAction" in action)) {
+  if (!('appAction' in action)) {
     return state
   }
   switch (action.type) {
     case ActionNames.INC:
-      return Object.assign({}, state, {num: state.num + action.plusAmount})
+      return Object.assign({}, state, { num: state.num + action.plusAmount })
     case ActionNames.DEC:
-      return Object.assign({}, state, {num: state.num - action.minusAmount})
+      return Object.assign({}, state, { num: state.num - action.minusAmount })
     case ActionNames.FETCH_START: {
-      return Object.assign({}, state, {loadingCount: state.loadingCount + 1})
+      return Object.assign({}, state, { loadingCount: state.loadingCount + 1 })
     }
     case ActionNames.FETCH_FINISH: {
-      return Object.assign({}, state, {loadingCount: state.loadingCount - 1})
+      return Object.assign({}, state, { loadingCount: state.loadingCount - 1 })
     }
     default:
       return state
