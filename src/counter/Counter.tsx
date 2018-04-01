@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { CounterState } from './module'
 import { ActionDispatcher } from './Container'
-const styles = require('./style.css')
+const styles = require('./style.scss')
 
 interface Props {
   value: CounterState

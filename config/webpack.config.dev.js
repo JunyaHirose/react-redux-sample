@@ -20,20 +20,34 @@ module.exports = {
         loader: 'ts-loader'
       },
       {
-        test: /\.css/,
+        test: /\.scss$/,
+        // use: [
+        //   'style-loader',
+        //   'css-loader?importLoaders=1&modules',
+        //   'sass-loader',
+        // ],
         use: [
-          'style-loader',
-          'css-loader?modules'
-        ],
+          {
+            loader: "style-loader"
+          }, {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1,
+              modules: true
+            }
+          }, {
+            loader: "sass-loader"
+          }
+        ]
       }
     ]
   },
   resolve: {
-    extensions: [ '.ts', '.tsx', '.js' ]
+    extensions: ['.ts', '.tsx', '.js']
   },
   externals: {
     'react': 'React',
-    'react-dom' : 'ReactDOM',
+    'react-dom': 'ReactDOM',
   },
   plugins: [
     new HtmlWebpackPlugin({
