@@ -3,6 +3,7 @@ import { Switch } from 'react-router'
 import { Link, Route } from 'react-router-dom'
 import Counter from './counter/Container'
 import NotFound from './NotFound'
+import { Home } from './home/Home'
 
 export class Routes extends React.Component<{}, {}> {
   render() {
@@ -21,6 +22,7 @@ export class Routes extends React.Component<{}, {}> {
         <Switch>
           <Route exact={true} path="/counter" component={Counter} />
           <Route path="/counter/:myParams" component={Counter} />
+          <Route path="/" component={Home} />
           <Route component={NotFound} />
         </Switch>
       </div>
